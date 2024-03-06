@@ -11,6 +11,5 @@ with tempfile.TemporaryDirectory() as temp_dir:
     )
     os.system("unzip full-tmdb-tv-shows-dataset-2023-150k-shows.zip")
 
-    df = pd.read_csv("TMDB_tv_dataset_v3.csv")
-    df_first_ten_rows = df.head(10)
-    print(df_first_ten_rows.to_csv(index=False))
+    df = pd.read_csv("TMDB_tv_dataset_v3.csv", nrows=100)
+    print(df.to_csv(index=False))
