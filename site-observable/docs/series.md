@@ -21,4 +21,4 @@ Nombre de séries télévisées: ${totalCount.count - 1}
 const rows = db.query("select * from shows limit 10");
 ```
 
-${rows}
+${Inputs.table(rows)}
