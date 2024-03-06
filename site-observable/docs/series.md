@@ -15,7 +15,7 @@ const db = DuckDBClient.of({
 const totalCount = db.queryRow("SELECT count() AS count FROM shows");
 ```
 
-Nombre de séries télévisées: ${totalCount.count}
+Nombre de séries télévisées: ${totalCount.count - 1}
 
 ```js
 const rows = db.query("select * from shows limit 10");
