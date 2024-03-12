@@ -8,10 +8,10 @@ title: Choix d'une série télévisée
 const shows = FileAttachment("data/shows.csv").csv({ typed: true });
 ```
 
-Entrez le nom d'un film:
+Entrez le nom d'une série télévisée:
 
 ```js
-const text = view(Inputs.text());
+const query = view(Inputs.text());
 ```
 
 ```js
@@ -20,10 +20,9 @@ const db = DuckDBClient.of({ shows: shows });
 ```
 
 ```js
-const selected = db.query(`SELECT * FROM shows WHERE shows.name ILIKE ?`, [
-  `${text}%`,
+const results = db.query(`SELECT * FROM shows WHERE shows.name ILIKE ?`, [
+  `${query}%`,
 ]);
 ```
 
-${Inputs.table(selected)}
-
+${Inputs.table(results)}
