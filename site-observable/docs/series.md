@@ -20,9 +20,10 @@ const db = DuckDBClient.of({ shows: shows });
 ```
 
 ```js
-const results = db.query(`SELECT * FROM shows WHERE shows.name ILIKE ?`, [
-  `${query}%`,
-]);
+const results = db.query(
+  `SELECT * FROM shows WHERE shows.name ILIKE ? or shows.original_name ILIKE ?`,
+  [`${query}%`, `${query}%`]
+);
 ```
 
 ${Inputs.table(results)}
