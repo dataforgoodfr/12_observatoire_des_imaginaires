@@ -37,4 +37,4 @@ ${show["name"]}
 
 </div>
 
-<input type="button" value="Menu Principal" onClick="window.location.href='../'" />
+<input type="button" value="Menu Principal" onClick="window.location.href='./'" />
