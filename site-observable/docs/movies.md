@@ -26,3 +26,15 @@ const results = db.query(`SELECT * FROM movies WHERE movies.title ILIKE ?`, [
 ```
 
 ${Inputs.table(results)}
+
+```js
+import { html } from "npm:htl";
+```
+
+Films sélectionnés (${results.length} résultat(s)):
+
+${results.length <=20 ? results.forEach((movie) => display(html`<a href="${movie["tally_url"]}">
+${movie["title"]}
+</a><br />`)) : ""}
+
+</div>

@@ -21,9 +21,21 @@ const db = DuckDBClient.of({ shows: shows });
 
 ```js
 const results = db.query(
-  `SELECT * FROM shows WHERE shows.name ILIKE ? or shows.original_name ILIKE ?`,
-  [`${query}%`, `${query}%`]
+  `SELECT * FROM shows WHERE shows.name ILIKE ?`,
+  [`${query}%`]
 );
 ```
 
 ${Inputs.table(results)}
+
+```js
+import { html } from "npm:htl";
+```
+
+Séries sélectionnées (${results.length} résultat(s)):
+
+${results.length <=20 ? results.forEach((show) => display(html`<a href="${show["tally_url"]}">
+${show["name"]}
+</a><br />`)) : ""}
+
+</div>
