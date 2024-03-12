@@ -25,8 +25,6 @@ const results = db.query(`SELECT * FROM movies WHERE movies.title ILIKE ?`, [
 ]);
 ```
 
-${Inputs.table(results)}
-
 ```js
 import { html } from "npm:htl";
 ```
@@ -38,3 +36,5 @@ ${movie["title"]}
 </a><br />`)) : ""}
 
 </div>
+
+<input type="button" value="Menu Principal" onClick="window.location.href='/'" />

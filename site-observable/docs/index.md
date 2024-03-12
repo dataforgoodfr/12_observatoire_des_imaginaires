@@ -2,109 +2,24 @@
 toc: false
 ---
 
-<style>
+# l'Observatoire des Imaginaires
 
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: var(--sans-serif);
-  margin: 4rem 0 8rem;
-  text-wrap: balance;
-  text-align: center;
-}
+Veniam deserunt veniam enim dolore irure quis. Aliqua laboris anim incididunt occaecat dolore excepteur dolore ad quis nostrud. In do pariatur incididunt nisi incididunt occaecat irure proident nostrud commodo sint non voluptate sunt. Nisi nostrud cillum ex incididunt ipsum labore magna tempor enim. Laborum deserunt pariatur ex id irure commodo minim laborum incididunt duis irure.
 
-.hero h1 {
-  margin: 2rem 0;
-  max-width: none;
-  font-size: 14vw;
-  font-weight: 900;
-  line-height: 1;
-  background: linear-gradient(30deg, var(--theme-foreground-focus), currentColor);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+## Films Récents
 
-.hero h2 {
-  margin: 0;
-  max-width: 34em;
-  font-size: 20px;
-  font-style: initial;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--theme-foreground-muted);
-}
+Nulla laboris aliqua nulla minim minim. Labore minim fugiat velit reprehenderit magna pariatur id sunt sunt eiusmod cillum. Ex ut irure reprehenderit mollit non ad. Cillum consectetur fugiat laborum commodo. Consectetur elit ea laborum elit ad.
 
-@media (min-width: 640px) {
-  .hero h1 {
-    font-size: 90px;
-  }
-}
+Officia aliquip velit fugiat aliquip commodo exercitation. Ipsum labore nostrud do consequat quis et. Laboris veniam nulla non duis Lorem est eiusmod. Eu aliquip duis excepteur excepteur ipsum pariatur incididunt esse laborum incididunt sint eiusmod nostrud cillum. Labore ad reprehenderit deserunt enim laboris exercitation aute adipisicing fugiat sunt cupidatat.
 
-</style>
+Duis culpa et Lorem duis et occaecat labore id voluptate. Id nostrud fugiat laboris qui ipsum dolore ex proident culpa pariatur cupidatat ex mollit. Reprehenderit nulla mollit magna culpa id irure exercitation nisi qui. Excepteur eiusmod ex irure fugiat incididunt consectetur ipsum do in exercitation reprehenderit in deserunt. Occaecat irure ullamco eu anim exercitation id deserunt enim Lorem officia velit sit nostrud id.
 
-<div class="hero">
-  <h1>Hello, Observable Framework</h1>
-  <h2>Welcome to your new project! Edit&nbsp;<code style="font-size: 90%;">docs/index.md</code> to change this page.</h2>
-  <a href="https://observablehq.com/framework/getting-started" target="_blank">Get started<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
-</div>
+<input type="button" value="Aller au Questionnaire" onClick="window.location.href='/movies'" /><br />
 
-<div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "Your awesomeness over time 🚀",
-      subtitle: "Up and to the right!",
-      width,
-      y: {grid: true, label: "Awesomeness"},
-      marks: [
-        Plot.ruleY([0]),
-        Plot.lineY(aapl, {x: "Date", y: "Close", tip: true})
-      ]
-    }))
-  }</div>
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "How big are penguins, anyway? 🐧",
-      width,
-      grid: true,
-      x: {label: "Body mass (g)"},
-      y: {label: "Flipper length (mm)"},
-      color: {legend: true},
-      marks: [
-        Plot.linearRegressionY(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species"}),
-        Plot.dot(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species", tip: true})
-      ]
-    }))
-  }</div>
-</div>
+## Séries Récentes
 
----
+Esse nulla Lorem veniam commodo in est consequat sit. Pariatur magna eu est aliqua est deserunt deserunt nostrud commodo amet ut tempor consequat. Officia fugiat ullamco mollit adipisicing mollit. Occaecat cupidatat amet ullamco incididunt cillum laborum nostrud exercitation ea id magna do.
 
-## Next steps
+Anim cillum est consequat nulla ipsum commodo commodo ad eiusmod minim Lorem laboris. Sunt veniam magna laboris duis tempor consequat eu pariatur. Est aute do occaecat voluptate occaecat eiusmod minim fugiat excepteur tempor.
 
-Here are some ideas of things you could try…
-
-<div class="grid grid-cols-4">
-  <div class="card">
-    Chart your own data using <a href="https://observablehq.com/framework/lib/plot"><code>Plot</code></a> and <a href="https://observablehq.com/framework/javascript/files"><code>FileAttachment</code></a>. Make it responsive using <a href="https://observablehq.com/framework/javascript/display#responsive-display"><code>resize</code></a>.
-  </div>
-  <div class="card">
-    Create a <a href="https://observablehq.com/framework/routing">new page</a> by adding a Markdown file (<code>whatever.md</code>) to the <code>docs</code> folder.
-  </div>
-  <div class="card">
-    Add a drop-down menu using <a href="https://observablehq.com/framework/javascript/inputs"><code>Inputs.select</code></a> and use it to filter the data shown in a chart.
-  </div>
-  <div class="card">
-    Write a <a href="https://observablehq.com/framework/loaders">data loader</a> that queries a local database or API, generating a data snapshot on build.
-  </div>
-  <div class="card">
-    Import a <a href="https://observablehq.com/framework/javascript/imports">recommended library</a> from npm, such as <a href="https://observablehq.com/framework/lib/leaflet">Leaflet</a>, <a href="https://observablehq.com/framework/lib/dot">GraphViz</a>, <a href="https://observablehq.com/framework/lib/tex">TeX</a>, or <a href="https://observablehq.com/framework/lib/duckdb">DuckDB</a>.
-  </div>
-  <div class="card">
-    Ask for help, or share your work or ideas, on the <a href="https://talk.observablehq.com/">Observable forum</a>.
-  </div>
-  <div class="card">
-    Visit <a href="https://github.com/observablehq/framework">Framework on GitHub</a> and give us a star. Or file an issue if you’ve found a bug!
-  </div>
-</div>
+<input type="button" value="Aller au Questionnaire" onClick="window.location.href='/series'" />

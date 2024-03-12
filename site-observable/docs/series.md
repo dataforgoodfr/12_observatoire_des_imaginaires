@@ -20,13 +20,10 @@ const db = DuckDBClient.of({ shows: shows });
 ```
 
 ```js
-const results = db.query(
-  `SELECT * FROM shows WHERE shows.name ILIKE ?`,
-  [`${query}%`]
-);
+const results = db.query(`SELECT * FROM shows WHERE shows.name ILIKE ?`, [
+  `${query}%`,
+]);
 ```
-
-${Inputs.table(results)}
 
 ```js
 import { html } from "npm:htl";
@@ -39,3 +36,5 @@ ${show["name"]}
 </a><br />`)) : ""}
 
 </div>
+
+<input type="button" value="Menu Principal" onClick="window.location.href='/'" />
