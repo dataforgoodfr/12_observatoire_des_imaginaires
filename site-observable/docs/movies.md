@@ -2,7 +2,7 @@
 title: Choix d'un film
 ---
 
-# Sélectionnez un film
+# Chosir un film
 
 ```js
 const movies = FileAttachment("data/movies.csv").csv({ typed: true });
@@ -20,21 +20,23 @@ const db = DuckDBClient.of({ movies: movies });
 ```
 
 ```js
-const results = db.query(`SELECT * FROM movies WHERE movies.title ILIKE ?`, [
-  `${query}%`,
-]);
+const results = db.query(
+  `SELECT * FROM movies WHERE movies.title ILIKE ? ORDER BY movies.title`,
+  [`${query}%`]
+);
 ```
 
 ```js
 import { html } from "npm:htl";
 ```
 
-Films sélectionnés (${results.length} résultat(s)):
+${results.length} films trouvés:
 
-${results.length <=20 ? results.forEach((movie) => display(html`<a href="${movie["tally_url"]}">
+${results.length > 0 ? results.slice(0,20).forEach((movie) => display(html`<a href="${movie["tally_url"]}">
 ${movie["title"]}
-</a><br />`)) : ""}
+</a><br />`)) : display(html`Désolé, ce film n'est pas répertorié dans notre base. <a href="https://tally.so/r/wQ5Og8">Aller au questionnaire</a>`)}
 
 </div>
 
-<input type="button" value="Menu Principal" onClick="window.location.href='./'" />
+<a href="./">Retour</a>
+
