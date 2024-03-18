@@ -17,7 +17,7 @@ with tempfile.TemporaryDirectory() as temp_dir:
     # Remove adult movies
     df = df[df["adult"] == False]  # noqa: E712
 
-    # Calculate the date for the past five years
+    # Calculate the date for the past two years
     years_ago = datetime.now() - timedelta(days=365 * 2)
     start_date = years_ago.replace(month=1, day=1)
 
