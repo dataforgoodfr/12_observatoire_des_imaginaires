@@ -162,8 +162,9 @@ cython_debug/
 # Precommit hooks: ruff cache
 .ruff_cache
 .DS_Store
-data/raw_data.csv
-data/Treated_data.csv
+
+
+data
 
 # API integration
 apis
