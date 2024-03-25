@@ -29,7 +29,14 @@ with tempfile.TemporaryDirectory() as temp_dir:
 
     # Select the columns we want
     df = df[
-        ["id", "title", "original_title", "production_year", "production_countries", "genres"]
+        [
+            "id",
+            "title",
+            "original_title",
+            "production_year",
+            "production_countries",
+            "genres",
+        ]
     ]
 
     print(df.to_csv(index=False))
