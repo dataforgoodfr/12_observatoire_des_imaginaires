@@ -46,7 +46,9 @@ if (results.length > 0) {
         production_countries,
         genres,
       }) => {
-        const url = `${tallyUrl}?id=${id}&original_title=${original_title}&production_year=${production_year}&production_countries=${production_countries}&genres=${genres}`;
+        const url = `${tallyUrl}?id=${id}&original_title=${original_title}&production_year=${production_year}&production_countries=${
+          production_countries || ""
+        }&genres=${genres || ""}`;
         display(html`<a href="${url}">${title}</a><br />`);
       }
     );
