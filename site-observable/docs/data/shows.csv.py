@@ -18,7 +18,11 @@ with tempfile.TemporaryDirectory() as temp_dir:
 
     # Add a column with the tally URL
     df["tally_url"] = df.apply(
-        lambda row: f"""https://tally.so/r/wQ5Og8?original_title={row["original_name"]}&production_countries={row["production_countries"]}""",
+        lambda row: (
+            f"""https://tally.so/r/wQ5Og8"""
+            f"""?original_title={row["original_name"]}"""
+            f"""&production_countries={row["production_countries"]}"""
+        ),
         axis=1,
     )
 

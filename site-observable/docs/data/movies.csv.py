@@ -22,13 +22,14 @@ with tempfile.TemporaryDirectory() as temp_dir:
     start_date = years_ago.replace(month=1, day=1)
 
     # Filter the dataframe based on the start date
-    df = df[df["release_date"] >= start_date]
-
-    df["production_year"] = df["release_date"].fillna("").map(lambda x: str(x)[:4])
-
-    # Add a column with the tally URL
     df["tally_url"] = df.apply(
-        lambda row: f"""https://tally.so/r/wQ5Og8?original_title={row["original_title"]}&production_year={row["production_year"]}&production_countries={row["production_countries"]}&genres={row["genres"]}""",
+        lambda row: (
+            f"""https://tally.so/r/wQ5Og8"""
+            f"""?original_title={row["original_title"]}"""
+            f"""&production_year={row["production_year"]}"""
+            f"""&production_countries={row["production_countries"]}"""
+            f"""&genres={row["genres"]}"""
+        ),
         axis=1,
     )
 
