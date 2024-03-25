@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  # Run this workflow whenever a new commit is pushed to main.
+  push: { branches: [main] }
+  # Run this workflow once per day, at 10:15 UTC
+  schedule: [{ cron: "15 10 * * *" }]
+  # Run this workflow when triggered manually in GitHub’s UI.
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+      - run: cd site-observable
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - name: Deploy to Observable Cloud
+        # This parameter to `--message` will use the latest commit message
+        run: yarn deploy -- --message "$(git log -1 --pretty=%s)"
+        env:
+          # Authentication information. See below for how to set this up.
+          OBSERVABLE_TOKEN: ${{ secrets.OBSERVABLE_TOKEN }}
