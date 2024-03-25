@@ -22,18 +22,14 @@ with tempfile.TemporaryDirectory() as temp_dir:
     start_date = years_ago.replace(month=1, day=1)
 
     # Filter the dataframe based on the start date
-    df["tally_url"] = df.apply(
-        lambda row: (
-            f"""https://tally.so/r/wQ5Og8"""
-            f"""?original_title={row["original_title"]}"""
-            f"""&production_year={row["production_year"]}"""
-            f"""&production_countries={row["production_countries"]}"""
-            f"""&genres={row["genres"]}"""
-        ),
-        axis=1,
-    )
+    df = df[df["release_date"] >= start_date]
+
+    # Add a column with the production_year based on the release_date
+    df["production_year"] = df["release_date"].dt.year
 
     # Select the columns we want
-    df = df[["id", "title", "tally_url"]]
+    df = df[
+        ["id", "title", "original_title", "production_year", "production_countries", "genres"]
+    ]
 
     print(df.to_csv(index=False))
