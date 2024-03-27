@@ -11,18 +11,33 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-observable
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: yarn
-      - run: cd site-observable
+          cache-dependency-path: site-observable/package.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.4"
+      - name: Setup Poetry
+        uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: "1.7.1"
+      - run: poetry install --no-root
       - run: yarn install --frozen-lockfile
-      - run: yarn build
+      - run: poetry run yarn build
+        env:
+          # Kaggle credentials
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       - name: Deploy to Observable Cloud
         # This parameter to `--message` will use the latest commit message
         run: yarn deploy -- --message "$(git log -1 --pretty=%s)"
         env:
-          # Authentication information. See below for how to set this up.
+          # Auth token to deploy to Observable Cloud
           OBSERVABLE_TOKEN: ${{ secrets.OBSERVABLE_TOKEN }}
