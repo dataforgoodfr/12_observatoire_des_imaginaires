@@ -21,6 +21,14 @@ jobs:
           node-version: 20
           cache: yarn
           cache-dependency-path: site-observable/package.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.4"
+      - name: Setup Poetry
+        uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: "1.7.1"
+      - run: poetry install --no-root
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - name: Deploy to Observable Cloud
