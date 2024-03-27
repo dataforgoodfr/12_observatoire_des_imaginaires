@@ -31,9 +31,13 @@ jobs:
       - run: poetry install --no-root
       - run: yarn install --frozen-lockfile
       - run: poetry run yarn build
+        env:
+          # Kaggle credentials
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       - name: Deploy to Observable Cloud
         # This parameter to `--message` will use the latest commit message
         run: yarn deploy -- --message "$(git log -1 --pretty=%s)"
         env:
-          # Authentication information. See below for how to set this up.
+          # Auth token to deploy to Observable Cloud
           OBSERVABLE_TOKEN: ${{ secrets.OBSERVABLE_TOKEN }}
