@@ -5,6 +5,7 @@ title: Choix d'un film
 # Chosir un film
 
 ```js
+const tallyUrl = "https://tally.so/r/wa6jyb";
 const movies = FileAttachment("data/movies.csv").csv({ typed: true });
 ```
 
@@ -32,11 +33,33 @@ import { html } from "npm:htl";
 
 ${results.length} films trouvés:
 
-${results.length > 0 ? results.slice(0,20).forEach((movie) => display(html`<a href="${movie["tally_url"]}">
-${movie["title"]}
-</a><br />`)) : display(html`Désolé, ce film n'est pas répertorié dans notre base. <a href="https://tally.so/r/wQ5Og8">Aller au questionnaire</a>`)}
+```js
+if (results.length > 0) {
+  results
+    .slice(0, 20)
+    .forEach(
+      ({
+        id,
+        title,
+        original_title,
+        production_year,
+        production_countries,
+        genres,
+      }) => {
+        const url = `${tallyUrl}?id=${id}&original_title=${original_title}&production_year=${production_year}&production_countries=${
+          production_countries || ""
+        }&genres=${genres || ""}`;
+        display(html`<a href="${url}">${title}</a><br />`);
+      }
+    );
+} else {
+  display(
+    html`Désolé, ce film n'est pas répertorié dans notre base.
+      <a href="${tallyUrl}">Aller au questionnaire</a>`
+  );
+}
+```
 
 </div>
 
 <a href="./">Retour</a>
-

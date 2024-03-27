@@ -16,17 +16,7 @@ with tempfile.TemporaryDirectory() as temp_dir:
     # Remove adult movies
     df = df[df["adult"] == False]  # noqa: E712
 
-    # Add a column with the tally URL
-    df["tally_url"] = df.apply(
-        lambda row: (
-            f"""https://tally.so/r/wQ5Og8"""
-            f"""?original_title={row["original_name"]}"""
-            f"""&production_countries={row["production_countries"]}"""
-        ),
-        axis=1,
-    )
-
     # Select the columns we want
-    df = df[["id", "name", "tally_url"]]
+    df = df[["id", "name", "original_name", "production_countries"]]
 
     print(df.to_csv(index=False))
