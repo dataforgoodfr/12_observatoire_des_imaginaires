@@ -11,13 +11,15 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site-observable
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: yarn
-      - run: cd site-observable
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - name: Deploy to Observable Cloud
